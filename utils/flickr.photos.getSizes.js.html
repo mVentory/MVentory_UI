@@ -4,10 +4,13 @@
 
 <!-- THIS IS JUST QUICK SNIPPET TO GET IMAGE SIZES FROM FLICKR -->
 
-<div class="camera_target_content" style="width:510px;">Slider here</div>
+<div class="camera_target_content" style="width:410px;"></div>
 
 
 <script type="text/javascript">// <![CDATA[
+
+
+var API_KEY = "7372f9055f3f8555be03b8435f974ad0";
 
 /**
 * Call flickr api and get me a url of a smaller image
@@ -22,7 +25,7 @@ function getFlickrFotoByPhotoId(fotoId, approximateWidth){
           jQuery.getJSON("https://api.flickr.com/services/rest/?jsoncallback=?",
                       {
                         method: "flickr.photos.getSizes",
-                        api_key: "7372f9055f3f8555be03b8435f974ad0",
+                        api_key: API_KEY,
                         photo_id: fotoId ,
                         format: "json"
                       },
@@ -59,7 +62,7 @@ function getFlickrFotoByPhotoId(fotoId, approximateWidth){
 jQuery.getJSON("https://api.flickr.com/services/rest/?jsoncallback=?",
               {
                 method: "flickr.photosets.getPhotos",
-                api_key: "7372f9055f3f8555be03b8435f974ad0",
+                api_key: API_KEY,
                 photoset_id: "72157645507184622",
                 extras: "url_o",
                 format: "json"
