@@ -1,0 +1,79 @@
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- THIS IS JUST QUICK SNIPPET TO GET IMAGE SIZES FROM FLICKR -->
+
+<div class="camera_target_content" style="width:510px;">Slider here</div>
+
+
+<script type="text/javascript">// <![CDATA[
+
+/**
+* Call flickr api and get me a url of a smaller image
+* based on a photo id and current slider dimension. Some images are big
+* and we want a quick load time.
+*
+* @param approtimateWidth integer of slider width
+* 
+*/
+function getFlickrFotoByPhotoId(fotoId, approximateWidth){
+  
+          jQuery.getJSON("https://api.flickr.com/services/rest/?jsoncallback=?",
+                      {
+                        method: "flickr.photos.getSizes",
+                        api_key: "7372f9055f3f8555be03b8435f974ad0",
+                        photo_id: fotoId ,
+                        format: "json"
+                      },
+                      function(data){
+                        var url = "";
+                        jQuery.each(data.sizes.size,function(i,size){
+                            if(!size){
+                              return false;
+                            }
+                            
+                            if(approximateWidth <= 500 ){
+                               if(size.label == "Medium") {
+                                  url = size.source;
+                                  return false;
+                               }
+                            }else{
+                               if(size.label == "Medium 800"){
+                                  url = size.source;
+                                  return false;
+                               }
+                                
+                            }
+                        });
+                        
+                        /// do something with $url !! 
+                        console.log(url);
+                        
+                      });
+}
+
+
+
+jQuery.getJSON("https://api.flickr.com/services/rest/?jsoncallback=?",
+              {
+                method: "flickr.photosets.getPhotos",
+                api_key: "7372f9055f3f8555be03b8435f974ad0",
+                photoset_id: "72157645507184622",
+                extras: "url_o",
+                format: "json"
+              },
+              function(data){
+                  
+                  jQuery.each(data.photoset.photo, function(i,v) {
+                      
+                        //console.log(v.url_o);
+                        getFlickrFotoByPhotoId( v.id, jQuery(".camera_target_content").width() );
+                        
+                  });
+               
+                
+              }
+);
+
+// ]]></script>
