@@ -67,12 +67,9 @@ jQuery.getJSON("https://api.flickr.com/services/rest/?jsoncallback=?",
                   
                   jQuery.each(data.photoset.photo, function(i,v) {
                       
-                        //console.log(v.url_o);
                         getFlickrFotoByPhotoId( v.id, jQuery(".camera_target_content").width() );
                         
                   });
-               
-                
               }
 );
 
