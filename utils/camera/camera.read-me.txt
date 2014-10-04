@@ -1,5 +1,6 @@
+1. Mage sure you upload the camera/ files.
 
-1. In backend CMS > Homepage > Design make sure you have something like:
+2. In backend CMS > Homepage > Design make sure you have something like:
 
 <reference name="head">
   <action method="addItem"><type>js_css</type><name>camera/styles.css</name></action>
