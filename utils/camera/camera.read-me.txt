@@ -1,0 +1,108 @@
+
+1. In backend CMS > Homepage > Design make sure you have something like:
+
+<reference name="head">
+  <action method="addItem"><type>js_css</type><name>camera/styles.css</name></action>
+  <action method="addJs"><script>camera/camera.min.js</script></action>
+  <action method="addJs"><script>camera/jquery.mtlib.js</script></action>
+  <action method="addJs"><script>camera/camera.getImageSizes.js</script></action>
+</reference>
+
+
+2. Go to backend CMS > Homepage > Content and replace the following:
+
+<script type="text/javascript">// <![CDATA[
+jQuery(function (cash) {
+  var $slides = $('#slides');
+
+  $.getJSON(
+    "https://api.flickr.com/services/rest/?jsoncallback=?",
+    {
+      method: "flickr.photosets.getPhotos",
+      api_key: "7372f9055f3f8555be03b8435f974ad0",
+      photoset_id: "72157645507184622",
+      extras: "url_o",
+      format: "json"
+    },
+    function (data) {
+      var photos;
+
+      if (data.stat == 'fail')
+        return console.log(data.message);
+
+      photos = data.photoset.photo;
+
+      if (!photos.length)
+        return console.log('No photos in photo set');
+
+      for (var i = 0, photo; photo = photos[i++];)
+        $('<div>', { 'data-src': photo.url_o }).appendTo($slides);
+
+      $slides.camera({
+        alignmen: 'topCenter',
+        height: '36.34%',
+        minHeight: '281px',
+        loader : false,
+        pagination: true,
+        fx: 'simpleFade',
+        navigationHover:false,
+        navigation: true,
+        pagination:false,
+        thumbnails: false,
+        playPause: false
+      });
+    }
+  );
+});
+// ]]></script>
+  
+  
+with:
+
+
+  <script type="text/javascript">// <![CDATA[
+
+
+var API_KEY = "7372f9055f3f8555be03b8435f974ad0";
+
+var $slides = jQuery('#slides');
+
+             
+jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
+                dataType: "json",
+                async: false,
+                data: {
+                      method: "flickr.photosets.getPhotos",
+                      api_key: API_KEY,
+                      photoset_id: "72157645507184622",
+                      extras: "url_o",
+                      format: "json"
+                },
+      })
+      .done(function(data){             
+                photos = data.photoset.photo;
+                jQuery.each(photos, function(i,_photo) {
+                      
+                        getFlickrFotoByPhotoId( _photo.id, $slides.width(), API_KEY, $slides );
+                });
+      });
+  
+              
+jQuery(window).load(function(){
+    
+        $slides.camera({
+          alignmen: 'topCenter',
+          height: '36.34%',
+          minHeight: '281px',
+          loader : false,
+          pagination: false,
+          fx: 'simpleFade',
+          navigationHover:false,
+          navigation: true,
+          thumbnails: false,
+          playPause: false
+        });
+});
+
+
+// ]]></script>
