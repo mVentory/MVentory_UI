@@ -43,8 +43,13 @@ function getFlickrFotoByPhotoId(fotoId, approximateWidth, API_KEY, $slides){
                                   url = size.source;
                                   return false;
                                }
+                            }else if(approximateWidth > 500 && approximateWidth <= 800 ){
+                              if(size.label == "Medium 800"){
+                                  url = size.source;
+                                  return false;
+                               }
                             }else{
-                               if(size.label == "Medium 800"){
+                               if(size.label == "Original"){
                                   url = size.source;
                                   return false;
                                }
