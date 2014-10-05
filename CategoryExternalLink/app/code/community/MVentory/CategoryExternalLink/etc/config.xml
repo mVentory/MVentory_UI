@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Creative Commons License BY-NC-ND.
+* NonCommercial — You may not use the material for commercial purposes.
+* NoDerivatives — If you remix, transform, or build upon the material,
+* you may not distribute the modified material.
+* See the full license at http://creativecommons.org/licenses/by-nc-nd/4.0/
+*
+* See http://mventory.com/legal/licensing/ for other licensing options.
+*
+* @package MVentory
+* @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
+* @license http://creativecommons.org/licenses/by-nc-nd/4.0/
+*/
+-->
+<config>
+<modules>
+  <MVentory_CategoryExternalLink>
+    <version>0.1.0</version>
+  </MVentory_CategoryExternalLink>
+</modules>
+<global>
+  <blocks>
+      <categoryexternallink>
+          <class>MVentory_CategoryExternalLink_Block</class>
+      </categoryexternallink>
+  </blocks>
+  <helpers>
+      <categoryexternallink>
+          <class>MVentory_CategoryExternalLink_Helper</class>
+      </categoryexternallink>
+  </helpers>
+  <models>
+      <categoryexternallink>
+          <class>MVentory_CategoryExternalLink_Model</class>
+      </categoryexternallink>
+      
+      <catalog>
+        <rewrite>
+            <category>MVentory_CategoryExternalLink_Model_Category</category>
+            <category_url>MVentory_CategoryExternalLink_Model_Category_Url</category_url>
+            <url>MVentory_CategoryExternalLink_Model_Url</url>
+        </rewrite>
+      </catalog>
+
+      
+  </models>        
+    
+</global>
+
+<adminhtml>
+</adminhtml>
+
+</config>
