@@ -24,9 +24,13 @@
 </modules>
 <global>
   <blocks>
-      <categoryexternallink>
-          <class>MVentory_CategoryExternalLink_Block</class>
-      </categoryexternallink>
+      
+        <page>
+            <rewrite>
+                <html_topmenu>MVentory_CategoryExternalLink_Block_Html_Topmenu</html_topmenu>
+            </rewrite>
+        </page>
+      
   </blocks>
   <helpers>
       <categoryexternallink>
