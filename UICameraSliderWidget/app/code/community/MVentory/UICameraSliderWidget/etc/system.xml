@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Creative Commons License BY-NC-ND.
+* NonCommercial — You may not use the material for commercial purposes.
+* NoDerivatives — If you remix, transform, or build upon the material,
+* you may not distribute the modified material.
+* See the full license at http://creativecommons.org/licenses/by-nc-nd/4.0/
+*
+* See http://mventory.com/legal/licensing/ for other licensing options.
+*
+* @package MVentory/UICameraSliderWidget
+* @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
+* @license http://creativecommons.org/licenses/by-nc-nd/4.0/
+* 
+*/
+-->
+<config>
+  <tabs>
+    <mventory translate="label" >
+      <label>mventory</label>
+      <sort_order>100</sort_order>
+    </mventory>
+  </tabs>
+  
+  <sections>
+      <camerasliderwidget translate="label">
+        <label>Camera Slider Widget</label>
+        <tab>mventory</tab>
+        <class>camerasliderwidget</class>
+        <frontend_type>text</frontend_type>
+        <sort_order>1</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store> 
+        <groups>
+            <group1 translate="label">
+                    <label>Config Fields</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                       <isenabled>
+                           <label>Enabled</label>
+                           <frontend_type>select</frontend_type>
+                           <source_model>adminhtml/system_config_source_yesno</source_model>
+                           
+                           <sort_order>1</sort_order>
+                           <show_in_default>1</show_in_default>
+                           <show_in_website>1</show_in_website>
+                           <show_in_store>1</show_in_store>                    
+                       </isenabled>
+                      
+                      <flickr_key translate="label tooltip">
+                         <label>Flickr API key</label>
+                         <tooltip>Your Flickr API Key. eg: 7372f9055f3f8555be03b8435f974ad0  </tooltip>
+                         <comment><![CDATA[Your Flickr API Key. eg: 7372f9055f3f8555be03b8435f974ad0 .
+                         
+                            <script type="text/javascript">
+                              $$('a.camerasliderwidget')[0].setStyle({padding: '0.5em 0.5em 0.28em 1.5em'});
+                              $$('a.camerasliderwidget span')[0].setStyle({
+                                backgroundImage: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiYTBiZjZhYy1hZmI3LTM0NDgtYTZlYS0wNDllZDM4OTEwNmYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDM2RDA1NTc3ODg4MTFFM0EyMThBREU0NTcxM0MwRDciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDM2RDA1NTY3ODg4MTFFM0EyMThBREU0NTcxM0MwRDciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVkMDRmMWY0LWQ0ZjMtNGM0My1iN2NlLTk5NDIxM2U4NmRhMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpiYTBiZjZhYy1hZmI3LTM0NDgtYTZlYS0wNDllZDM4OTEwNmYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4xqLqlAAACp0lEQVR42nSSXUgUURTHz52ZHd2tbSuj/HhoLRNDSOupMPsQe8oe+kLBZAuy8CnoJSR6kcjoocAgKYgywYKgHqKHkOohsYeCUknZAoW+rNzd2V3d+bwzt3N3ZmQX6sBhZ8+c/+/+z5kLgBEKhUCSJBAEAQrjzvXTxwb6Tx4urAUCAYhEInnNcvgAURSXaz2xPbV6ejKjKR+yZ2Mt9X5dluX/AzjdayJzE49fMe0zY+onNjsxMobv8vbC4XARoMgzISSfg/2dHdHNW/YDXQSwslC9sbLp1tWuGHfI3xeG6M9l2zYc2rep/Hz3gYPtHe035IC4EuwcgKMC2BrUVq9vilbI35nDUrPflEXHccCyLCA76tYFL5473r2raXesvLKikYho1dFRaHhpAjALIVhDIALY/HxiYnx86sGlgde3ycdnvQ8bmo925EV4Eth4Yh7gQbjYsbw6w7QBdBxNVeDNu7lhkZi/4q3NjV0SMUvAyoCbWS/5Dpa8X83NXBogNQ96Mqn2DU2eEd/PpP7UbjCVhrryNjBRbCrYmHZBJgopAkwuRjca/ld+A6RTMDw6d6HvydenxNs+Gb935O7O7dFT+TH43Da3jXYZt41NFgVYREAqBWMzyqPma/FOrDrL36SqTJYn77fE14alKOCGXaHgtlAEqbiTZAYSC+rPrZfjNQmDaVwn+YAfSdNk2QXLvRqSK7a5GGEGArLYn9HAocT2xUUAHqXMKAMVBTaKKYot5qaJNRXZ+BgMBlZ798cuAvA9BIxcKRjYTBGAawATFdSblGHy6y4IJdgqMsaKAVgAqlFDBj0EloAjkfiLaf2miIzWmhU9VWvkej4dBcbRzr9GYG+/6ENBQsueT1kjV14ujfo28bsN9u6NtLRtW3Ui5xgqHkZ90V8BBgD68VdWPAfSJQAAAABJRU5ErkJggg==)',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundColor: 'inherit',
+                                padding: '0 20px',
+                              });
+                         </script>]]>
+                         </comment>
+                         <frontend_type>text</frontend_type>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                         <sort_order>2</sort_order>
+                       </flickr_key>
+                      </fields>
+                                 
+              </group1>
+        </groups>
+      </camerasliderwidget>
+  </sections>
+</config>

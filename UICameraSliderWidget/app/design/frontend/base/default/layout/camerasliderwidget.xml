@@ -1,0 +1,53 @@
+<!--
+/**
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Creative Commons License BY-NC-ND.
+* NonCommercial — You may not use the material for commercial purposes.
+* NoDerivatives — If you remix, transform, or build upon the material,
+* you may not distribute the modified material.
+* See the full license at http://creativecommons.org/licenses/by-nc-nd/4.0/
+*
+* See http://mventory.com/legal/licensing/ for other licensing options.
+*
+* @package MVentory/UICameraSliderWidget
+* @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
+* @license http://creativecommons.org/licenses/by-nc-nd/4.0/
+*/
+-->
+<layout version="0.1.0">
+ 
+    <default>
+        <reference name="head">
+                      <!--
+                      <action method="addItem"><type>js_css</type><name>camera/styles.css</name></action>
+                      <action method="addJs"><script>camera/jquery-min.js</script></action>
+                      <action method="addJs"><script>camera/jquery.mobile.customized.min.js</script></action>
+                      <action method="addJs"><script>camera/jquery.easing.1.3.js</script></action>
+                      <action method="addJs"><script>camera/camera.min.js</script></action>
+                      <action method="addJs"><script>camera/camera.getImageSizes.js</script></action>
+                      -->
+                      
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addItem">
+                <type>js_css</type><name>camera/styles.css</name>
+          </action>
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
+                <script>camera/jquery-min.js</script>
+          </action>          
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
+                <script>camera/jquery.mobile.customized.min.js</script>
+          </action>
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
+                <script>camera/jquery.easing.1.3.js</script>
+          </action>
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
+                <script>camera/camera.min.js</script>
+          </action>
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
+                <script>camera/camera.getImageSizes.js</script>
+          </action>
+
+        </reference>
+    </default>
+  
+</layout>

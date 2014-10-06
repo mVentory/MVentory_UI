@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+<!-- THIS IS JUST QUICK SNIPPET TO GET IMAGE SIZES FROM FLICKR -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://welovebooks.co.nz/js/magenthemes/mt_dend/js/jquery.mtlib.js"></script>
+
+<link rel="stylesheet" type="text/css" href="http://welovebooks.co.nz/js/camera/styles.css" />
+<script type="text/javascript" src="http://welovebooks.co.nz/js/camera/camera.min.js"></script>
+
+<script type="text/javascript" src="camera.getImageSizes.js"></script>
+
+</head>
+<body>
+
+<div id="slides" class="camera_wrap" style="display: block; height: 281px; width:410px;" ></div>
+
+
+<script type="text/javascript">// <![CDATA[
+
+
+var API_KEY = "7372f9055f3f8555be03b8435f974ad0";
+
+var $slides = jQuery('#slides');
+
+             
+jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
+                dataType: "json",
+                async: false,
+                data: {
+                      method: "flickr.photosets.getPhotos",
+                      api_key: API_KEY,
+                      photoset_id: "72157645507184622",
+                      extras: "url_o",
+                      format: "json"
+                },
+      })
+      .done(function(data){             
+                photos = data.photoset.photo;
+                jQuery.each(photos, function(i,_photo) {
+                      
+                        getFlickrFotoByPhotoId( _photo.id, $slides.width(), API_KEY, $slides );
+                });
+      });
+  
+              
+jQuery(window).load(function(){
+    
+        $slides.camera({
+          alignmen: 'topCenter',
+          height: '36.34%',
+          minHeight: '281px',
+          loader : false,
+          pagination: false,
+          fx: 'simpleFade',
+          navigationHover:false,
+          navigation: true,
+          thumbnails: false,
+          playPause: false
+        });
+});
+             
+              
+
+
+
+
+
+
+
+// ]]></script>
+
+</body>
+</html>
