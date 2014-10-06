@@ -14,7 +14,8 @@
 
 ![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/UICameraSliderWidget/screenshot1.png)
 ![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/UICameraSliderWidget/screenshot2.png)
-
+![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/UICameraSliderWidget/screenshot3.png)
+![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/UICameraSliderWidget/screenshot4.png)
 
 ##License
 
