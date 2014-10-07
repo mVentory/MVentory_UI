@@ -8,9 +8,10 @@
 ##Installation
 
 1. Upload files to your magento.
-2. Go to backend Catalog > Manage Categories, and click on a category to select it. In the "General Information" tab there is a "URL Key" field. You now should be able to type in absolute urls there (http://otherwebsite.com/), hit save.
-Note: To enter a relative url, prefix it with a /. Like: "/delivery".
-3. Go to the website frontend and check that the menu item is now pointing to the external url.
+2. If you are using a rwd based theme, then make sure you place the page/html/topmenu/renderer.phtml in your theme.
+3. Go to backend Catalog > Manage Categories, and click on a category to select it. In the "General Information" tab there is a "URL Key" field. You now should be able to type in absolute urls there (http://otherwebsite.com/), hit save.
+Note: To enter a relative url (like to an existing CMS Page), prefix it with a /. Like: "/delivery".
+4. Go to the website frontend and check that the menu item is now pointing to the external url.
 
 ![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/CategoryExternalLink/screenshot1.png)
 ![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/CategoryExternalLink/screenshot2.png)
