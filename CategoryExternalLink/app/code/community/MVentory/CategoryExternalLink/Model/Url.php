@@ -40,8 +40,11 @@ class MVentory_CategoryExternalLink_Model_Url extends Mage_Catalog_Model_Url {
       
       
 
-      /******* if http then do not append suffix ******/
-      if(substr($urlKey, 0, 5) == "http:"){
+      /******* if link begins with http or with / then do not append suffix ******/
+      if(substr($urlKey, 0, 4) == "http"){
+          $requestPath = $urlKey;
+      }else if(substr($urlKey, 0, 1) == "/"){
+          
           $requestPath = $urlKey;
       }else{
           $requestPath = $parentPath . $urlKey . $categoryUrlSuffix;
