@@ -51,7 +51,15 @@ foreach ($children as $child) {
 
     $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
 
-    $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
+
+    /**** is this a link to our domain name? ****/
+    $pos = strpos($child->getUrl(), $_SERVER['HTTP_HOST']);
+
+
+    $html .= '<a href="'. $child->getUrl() .'"'.
+              
+              (($pos === false)?' target="_blank" ':'')
+               .' class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
 
     if (!empty($childrenWrapClass)) {
         $html .= '<div class="'. $childrenWrapClass .'">';
