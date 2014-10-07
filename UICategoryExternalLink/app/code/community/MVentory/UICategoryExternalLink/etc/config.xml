@@ -11,42 +11,42 @@
 *
 * See http://mventory.com/legal/licensing/ for other licensing options.
 *
-* @package MVentory
+* @package MVentory/UICategoryExternalLink
 * @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 -->
 <config>
 <modules>
-  <MVentory_CategoryExternalLink>
+  <MVentory_UICategoryExternalLink>
     <version>0.1.0</version>
-  </MVentory_CategoryExternalLink>
+  </MVentory_UICategoryExternalLink>
 </modules>
 <global>
   <blocks>
       
         <page>
             <rewrite>
-                <html_topmenu>MVentory_CategoryExternalLink_Block_Html_Topmenu</html_topmenu>
+                <html_topmenu>MVentory_UICategoryExternalLink_Block_Html_Topmenu</html_topmenu>
             </rewrite>
         </page>
       
   </blocks>
   <helpers>
       <categoryexternallink>
-          <class>MVentory_CategoryExternalLink_Helper</class>
+          <class>MVentory_UICategoryExternalLink_Helper</class>
       </categoryexternallink>
   </helpers>
   <models>
       <categoryexternallink>
-          <class>MVentory_CategoryExternalLink_Model</class>
+          <class>MVentory_UICategoryExternalLink_Model</class>
       </categoryexternallink>
       
       <catalog>
         <rewrite>
-            <category>MVentory_CategoryExternalLink_Model_Category</category>
-            <category_url>MVentory_CategoryExternalLink_Model_Category_Url</category_url>
-            <url>MVentory_CategoryExternalLink_Model_Url</url>
+            <category>MVentory_UICategoryExternalLink_Model_Category</category>
+            <category_url>MVentory_UICategoryExternalLink_Model_Category_Url</category_url>
+            <url>MVentory_UICategoryExternalLink_Model_Url</url>
         </rewrite>
       </catalog>
 

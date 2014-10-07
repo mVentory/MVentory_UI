@@ -11,16 +11,16 @@
 *
 * See http://mventory.com/legal/licensing/ for other licensing options.
 *
-* @package MVentory/API
+* @package MVentory/UICategoryExternalLink
 * @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 -->
 <config>
     <modules>
-        <MVentory_CategoryExternalLink>
+        <MVentory_UICategoryExternalLink>
             <active>true</active>
             <codePool>community</codePool>
-        </MVentory_CategoryExternalLink>
+        </MVentory_UICategoryExternalLink>
     </modules>
 </config>

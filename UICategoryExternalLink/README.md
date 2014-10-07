@@ -1,5 +1,5 @@
 
-#MVentory_CategoryExternalLink
+#MVentory_UICategoryExternalLink
 
 ##Features
 
