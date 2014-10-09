@@ -44,15 +44,28 @@
       
       <catalog>
         <rewrite>
+            <!--
             <category>MVentory_UICategoryExternalLink_Model_Category</category>
             <category_url>MVentory_UICategoryExternalLink_Model_Category_Url</category_url>
             <url>MVentory_UICategoryExternalLink_Model_Url</url>
+            -->
+            <observer>MVentory_UICategoryExternalLink_Model_Observer</observer>
         </rewrite>
       </catalog>
 
       
   </models>        
     
+   <events> 
+               <!--<page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <catalog_add_topmenu_items>
+                        <class>catalog/observer</class>
+                        <method>addCatalogToTopmenuItems</method>
+                    </catalog_add_topmenu_items>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>-->
+   </events>
 </global>
 
 <adminhtml>

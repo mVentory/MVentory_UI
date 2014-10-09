@@ -56,11 +56,16 @@ class MVentory_UICategoryExternalLink_Block_Html_Topmenu extends Mage_Page_Block
 
 
 /**** is this a link to our domain name? ****/
-$pos = strpos($child->getUrl(), $_SERVER['HTTP_HOST']);
+$pos = strpos($child->getdata('external_link'), $_SERVER['HTTP_HOST']);
+if($child->getdata('external_link')){
+  $url = $child->getdata('external_link');
+}else{
+  $url = $child->geturl();
+}
 
 
             $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
-            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode .
+            $html .= '<a href="' . $url . '" ' . $outermostClassCode .
                       (($pos === false)?' target="_blank" ':'').
                       '><span>'
                 . $this->escapeHtml($child->getName()) . '</span></a>';
