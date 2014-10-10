@@ -21,6 +21,9 @@
     <camerasliderwidget_home type="camerasliderwidget/slider" module="camerasliderwidget">
         <name>Camera Slider Widget</name>
         <description type="desc">Slider with images which load from Flickr.</description>
+        <js>mventory_camerasliderwidget.js</js>
+        
+        
         <parameters>  
             <photoset_id translate="label" module="camerasliderwidget">
               <visible>1</visible>
@@ -28,7 +31,15 @@
               <description>photoset id.</description>
               <type>text</type>
             </photoset_id>
-          
+            <paramsstring translate="label" module="camerasliderwidget">
+              <visible>1</visible>
+              <label>Params for camera.js:</label>
+              <description>(comma separated, use single quotes.)</description>
+              <type>textarea</type>
+            </paramsstring>
+            
+            
+            
         </parameters>    
     </camerasliderwidget_home>
 </widgets> 

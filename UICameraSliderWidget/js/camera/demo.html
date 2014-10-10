@@ -21,7 +21,8 @@
 var API_KEY = "7372f9055f3f8555be03b8435f974ad0";
 
 var $slides = jQuery('#slides');
-
+var showtitle=false;
+var showdesc=false;
              
 jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
                 dataType: "json",
@@ -30,15 +31,15 @@ jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallbac
                       method: "flickr.photosets.getPhotos",
                       api_key: API_KEY,
                       photoset_id: "72157645507184622",
-                      extras: "url_o",
+                      extras: "url_o, description",
                       format: "json"
                 },
       })
       .done(function(data){             
                 photos = data.photoset.photo;
                 jQuery.each(photos, function(i,_photo) {
-                      
-                        getFlickrFotoByPhotoId( _photo.id, $slides.width(), API_KEY, $slides );
+                        
+                        getFlickrFotoByPhotoId( _photo, $slides.width(), API_KEY, $slides );
                 });
       });
   
@@ -57,8 +58,12 @@ jQuery(window).load(function(){
           thumbnails: false,
           playPause: false
         });
-});
-             
+        
+        
+          
+          
+        
+});            
               
 
 

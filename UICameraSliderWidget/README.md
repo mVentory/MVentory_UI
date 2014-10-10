@@ -10,6 +10,7 @@
 2. Go to backend System > Configuration > Camera Slider Widget, and write your Flickr API KEY. Select enable if not already so.
 3. Go to CMS > Pages > Home page > Content and click the insert widget button. A dialog will appear, select "Camera slider widget" from the list, then enter your desired photosetId (from Flickr) and finally click Insert Widget. If viewing the Content tab in text mode you should now see a line like {{widget type="camerasliderwidget/slider" photoset_id="721576....."}}. Save the page.
 4. Go to the homepage of your site, the slider should now be visible.
+5. If you want to pass camera.js parameters add them as comma separated values. Eg: alignment: 'topCenter', height: '66.34%', minHeight: '350px' and use single quotes. You can pass title:'' or description:'' to make them visible.
 
 
 ![alt tag](https://raw.githubusercontent.com/mVentory/MVentory_UI/master/UICameraSliderWidget/screenshot1.png)

@@ -27,7 +27,7 @@
 * @param API_KEY 
 * @param $slides element
 */
-function getFlickrFotoByPhotoId(fotoId, approximateWidth, API_KEY, $slides){
+function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
           
           
           jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
@@ -36,7 +36,7 @@ function getFlickrFotoByPhotoId(fotoId, approximateWidth, API_KEY, $slides){
                   data: {
                         method: "flickr.photos.getSizes",
                         api_key: API_KEY,
-                        photo_id: fotoId ,
+                        photo_id: photo.id ,
                         format: "json"
                       }
                 })
@@ -65,8 +65,29 @@ function getFlickrFotoByPhotoId(fotoId, approximateWidth, API_KEY, $slides){
                             }
                         });
                         
-                        /// do something with $url !! 
-                        jQuery('<div>', { 'data-src': url }).appendTo($slides);
+                        /// populate
+                        el= jQuery('<div>', { 'data-src': url,
+                                        });//.appendTo($slides);
+                        
+                        if(showdesc && photo.description && photo.description._content) {
+                              
+                              desc = photo.description._content;
+                              var links = desc.match(/\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/ig);
+                              if(links && links[0]){
+                                    el.attr('data-link',links[0] );
+                              }
+                              jQuery('<div>', {'class':"slide-desc-text",
+                                        'style':"",
+                                        'text': desc}).appendTo(el);
+                        }     
+                        
+                        if(showtitle){
+                              title=jQuery('<div>', {'class':"slide-title-text",
+                                               'style':"",
+                                              'text': photo.title}).appendTo(el);
+                        }
+                        
+                        el.appendTo($slides);
                 });
 }
 

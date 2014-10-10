@@ -29,11 +29,31 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
       $enabled = Mage::getStoreConfig('camerasliderwidget/group1/isenabled');
       $apiKey = Mage::getStoreConfig('camerasliderwidget/group1/flickr_key');
       $photosetId = $this->getPhotosetId();
-        #Mage::log($apiKey);
+      
         
       if(empty($enabled)){
           return;
       }
+      
+      ///parameters for camerajs
+      $cameraparams = $this->getparamsstring();
+      $cameraparams = explode(",", $cameraparams);
+      $paramsstr ="";
+      $title="";
+      $description="";
+      foreach($cameraparams as $_param){
+          $pair = explode(":",$_param);
+          if(trim($pair[0]," '")=="title"){
+            $title = true;
+            continue;
+          }
+          if(trim($pair[0]," '")=="description"){
+            $description = true;
+            continue;
+          }
+          $paramsstr.= trim($_param) .",";
+      }
+      
         
       $html ='<div id="slides" class="" ></div>
 
@@ -41,7 +61,8 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
 
               var API_KEY = \''. $apiKey .'\';
               var $slides = jQuery("#slides");
-                           
+              var showtitle='.(!empty($title)?'true;':"false").';
+              var showdesc='.(!empty($description)?'true;':"false").';
               jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
                               dataType: "json",
                               async: false,
@@ -49,7 +70,7 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
                                     method: "flickr.photosets.getPhotos",
                                     api_key: API_KEY,
                                     photoset_id: \''. $photosetId .'\',
-                                    extras: "url_o",
+                                    extras: "url_o, description",
                                     format: "json"
                               },
                     })
@@ -57,7 +78,7 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
                               photos = data.photoset.photo;
                               jQuery.each(photos, function(i,_photo) {
                                     
-                                      getFlickrFotoByPhotoId( _photo.id, $slides.width(), API_KEY, $slides );
+                                      getFlickrFotoByPhotoId( _photo, $slides.width(), API_KEY, $slides );
                               });
                     });
                 
@@ -74,7 +95,9 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
                       navigationHover:false,
                       navigation: true,
                       thumbnails: false,
-                      playPause: false
+                      playPause: false,
+                      '.$paramsstr.'
+                      
                     });
               });
                            
