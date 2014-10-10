@@ -53,10 +53,15 @@ foreach ($children as $child) {
 
 
     /**** is this a link to our domain name? ****/
-    $pos = strpos($child->getUrl(), $_SERVER['HTTP_HOST']);
+    $pos = strpos($child->getdata('external_link'), $_SERVER['HTTP_HOST']);
+    if($child->getdata('external_link')){
+      $url = $child->getdata('external_link');
+    }else{
+      $url = $child->geturl();
+    }
+    
 
-
-    $html .= '<a href="'. $child->getUrl() .'"'.
+    $html .= '<a href="'. $url.'"'.
               
               (($pos === false)?' target="_blank" ':'')
                .' class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
