@@ -36,7 +36,7 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
       }
       
       ///parameters for camerajs
-      $cameraparams = $this->getparamsstring();
+      $cameraparams = trim($this->getparamsstring(),", ");
       $cameraparams = explode(",", $cameraparams);
       $paramsstr ="";
       $title="";
@@ -53,6 +53,7 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
           }
           $paramsstr.= trim($_param) .",";
       }
+      $paramsstr = trim($paramsstr,",");
       
         
       $html ='<div id="slides" class="" ></div>
