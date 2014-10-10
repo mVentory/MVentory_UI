@@ -69,20 +69,22 @@ function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
                         el= jQuery('<div>', { 'data-src': url,
                                         });//.appendTo($slides);
                         
-                        if(showdesc && photo.description && photo.description._content) {
+                        if(photo.description && photo.description._content) {
                               
                               desc = photo.description._content;
                               var links = desc.match(/\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/ig);
                               if(links && links[0]){
                                     el.attr('data-link',links[0] );
                               }
+                              if(showdesc ){
                               jQuery('<div>', {'class':"slide-desc-text",
                                         'style':"",
                                         'text': desc}).appendTo(el);
+                              }
                         }     
                         
                         if(showtitle){
-                              title=jQuery('<div>', {'class':"slide-title-text",
+                              jQuery('<div>', {'class':"slide-title-text",
                                                'style':"",
                                               'text': photo.title}).appendTo(el);
                         }
