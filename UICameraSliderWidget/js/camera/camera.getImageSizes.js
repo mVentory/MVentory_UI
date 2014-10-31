@@ -22,7 +22,7 @@
 * based on a photo id and current slider dimension. Some images are big
 * and we want a quick load time.
 *
-* @param fotoId integer 
+* @param foto object
 * @param approtimateWidth integer of slider width
 * @param API_KEY 
 * @param $slides element
@@ -69,29 +69,32 @@ function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
                         el= jQuery('<div>', { 'data-src': url,
                                         });//.appendTo($slides);
                         
-                        if(photo.description && photo.description._content) {
-                              
-                              desc = photo.description._content;
-                              var links = desc.match(/\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/ig);
-                              if(links && links[0]){
-                                    el.attr('data-link',links[0] );
-                              }
-                              if(showdesc ){
-                              jQuery('<div>', {'class':"slide-desc-text",
-                                        'style':"",
-                                        'text': desc}).appendTo(el);
-                              }
-                        }     
-                        
                         if(showtitle){
                               jQuery('<div>', {'class':"slide-title-text",
                                                'style':"",
                                               'text': photo.title}).appendTo(el);
-                        }
+                        }                       
+                        if(photo.description && photo.description._content) {
+                              desc = photo.description._content;
+                              if(showdesc ){
+                                        
+                                  //console.log(desc.replace(/<\/?[^>]+(>|$)/g, "") );       
+                                  jQuery('<div>', {'class':"slide-desc-text",
+                                                  'style':"",
+                                                  'text': desc.replace(/<\/?[^>]+(>|$)/g, "")
+                                                   }).appendTo(el);
+                              }
+                              
+                              var links = desc.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi);
+                              
+                              if(links && links[0]){
+                                    el.attr('data-link',links[0] );
+                              }
+
+                        }     
+                        
+
                         
                         el.appendTo($slides);
                 });
 }
-
-
-

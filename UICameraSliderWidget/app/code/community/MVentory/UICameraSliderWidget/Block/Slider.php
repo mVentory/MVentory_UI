@@ -23,13 +23,15 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
   * Produces html
   * @return string
   */
-  protected function _toHtml()
-  {
-        
+  protected function _toHtml(){
+      
       $enabled = Mage::getStoreConfig('camerasliderwidget/group1/isenabled');
       $apiKey = Mage::getStoreConfig('camerasliderwidget/group1/flickr_key');
-      $photosetId = $this->getPhotosetId();
       
+      $userId = $this->getUserId();
+      $photosetId = $this->getPhotosetId();
+        Mage::log("photoset id:".$photosetId);
+        Mage::log("user id:".$userId);
         
       if(empty($enabled)){
           return;
@@ -55,34 +57,61 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
       }
       $paramsstr = trim($paramsstr,",");
       
+      if(empty($userId)&&empty($photosetId)){
+        return;
+      }
+      
         
       $html ='<div id="slides" class="" ></div>
-
+              
               <script type="text/javascript">// <![CDATA[
-
+          
               var API_KEY = \''. $apiKey .'\';
+              var userId = \''.$userId.'\';
+              var photosetId = \''. $photosetId .'\';
               var $slides = jQuery("#slides");
               var showtitle='.(!empty($title)?'true;':"false").';
               var showdesc='.(!empty($description)?'true;':"false").';
+              var request = {};
+              
+              if(photosetId){
+                  request = {method: "flickr.photosets.getPhotos",
+                             api_key: API_KEY,
+                             photoset_id: photosetId,
+                             extras: "url_o, description",
+                             format: "json"
+                             };
+              }else{
+                  ////fallback to search by user
+                  request = {method: "flickr.photos.search",
+                             api_key: API_KEY,
+                             user_id: userId,
+                             content_type: 1,
+                             extras: "url_o, description",
+                             format: "json"
+                             };
+              }
+              
               jQuery.ajax({type: "GET",url: "https://api.flickr.com/services/rest/?jsoncallback=?",
                               dataType: "json",
                               async: false,
-                              data: {
-                                    method: "flickr.photosets.getPhotos",
-                                    api_key: API_KEY,
-                                    photoset_id: \''. $photosetId .'\',
-                                    extras: "url_o, description",
-                                    format: "json"
-                              },
+                              data: request,
                     })
-                    .done(function(data){             
-                              photos = data.photoset.photo;
+                    .done(function(data){
+                              
+                              if(photosetId){
+                                photos = data.photoset.photo;
+                              }else{
+                                photos = data.photos.photo;
+                              }
+                              
                               jQuery.each(photos, function(i,_photo) {
                                     
                                       getFlickrFotoByPhotoId( _photo, $slides.width(), API_KEY, $slides );
                               });
                     });
                 
+               
                             
               jQuery(window).load(function(){
                   

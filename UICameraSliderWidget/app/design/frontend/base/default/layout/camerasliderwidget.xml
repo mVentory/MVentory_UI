@@ -31,6 +31,9 @@
           <action ifconfig="camerasliderwidget/group1/isenabled" method="addItem">
                 <type>js_css</type><name>camera/styles.css</name>
           </action>
+          <action ifconfig="camerasliderwidget/group1/isenabled" method="addItem">
+                <type>js_css</type><name>camera/banner-styles.css</name>
+          </action>
           <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
                 <script>camera/jquery-min.js</script>
           </action>          
