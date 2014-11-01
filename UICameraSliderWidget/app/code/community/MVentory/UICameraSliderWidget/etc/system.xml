@@ -56,10 +56,9 @@
                        </isenabled>
                       
                       <flickr_key translate="label tooltip">
-                         <label>Flickr API key</label>
-                         <tooltip>Your Flickr API Key. eg: 7372f9055f3f8555be03b8435f974ad0  </tooltip>
-                         <comment><![CDATA[Your Flickr API Key. eg: 7372f9055f3f8555be03b8435f974ad0 .
-                         
+                         <label>Flickr Public API key</label>
+                         <tooltip>E.g. 7372f9055f3f8555be03b8435f974ad0</tooltip>
+                         <comment><![CDATA[Get yours from <a target="_blnk" href="https://www.flickr.com/services/apps/create/apply/">Flickr</a>.
                             <script type="text/javascript">
                               $$('a.camerasliderwidget')[0].setStyle({padding: '0.5em 0.5em 0.28em 1.5em'});
                               $$('a.camerasliderwidget span')[0].setStyle({
@@ -68,7 +67,7 @@
                                 backgroundColor: 'inherit',
                                 padding: '0 20px',
                               });
-                         </script>]]>
+                            </script>]]>
                          </comment>
                          <frontend_type>text</frontend_type>
                          <show_in_default>1</show_in_default>
