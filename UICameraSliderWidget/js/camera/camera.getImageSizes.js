@@ -77,24 +77,36 @@ function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
                         if(photo.description && photo.description._content) {
                               desc = photo.description._content;
                               if(showdesc ){
-                                        
-                                  //console.log(desc.replace(/<\/?[^>]+(>|$)/g, "") );       
+                                  
+                                  var cleandesc = cleanDescription(desc);
                                   jQuery('<div>', {'class':"slide-desc-text",
                                                   'style':"",
-                                                  'text': desc.replace(/<\/?[^>]+(>|$)/g, "")
+                                                  'text': cleandesc
                                                    }).appendTo(el);
                               }
                               
                               var links = desc.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi);
                               
-                              if(links && links[0]){
-                                    el.attr('data-link',links[0] );
+                              if(links && links[links.length-1]){
+                                    el.attr('data-link',links[links.length - 1]);
+                                    
                               }
 
-                        }     
-                        
-
+                        }
                         
                         el.appendTo($slides);
                 });
+}
+
+
+function cleanDescription(desc){
+          //console.log(desc.replace(/<\/?[^>]+(>|$)/g, "") );                             
+          //var cleandesc = desc.replace(/<\/?[^>]+(>|$)/g, "");
+          //var cleandesc = desc.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+          var results = desc.match(/(<a\b[^>]*?>.*?<\/a>)/g);
+          var last = results[results.length-1];
+          var cleandesc =  desc.replace(last, "");
+          cleandesc = cleandesc.replace(/<\/?[^>]+(>|$)/g, "");
+          console.log(  cleandesc ); 
+          return cleandesc;          
 }
