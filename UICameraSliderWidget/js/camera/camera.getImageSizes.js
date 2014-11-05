@@ -70,19 +70,34 @@ function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
                                         });//.appendTo($slides);
                         
                         if(showtitle){
-                              jQuery('<div>', {'class':"slide-title-text",
+                              
+                              content =jQuery('<div>', {'class':"slide-text",
+                                               
+                                              });
+                              
+                              jQuery('<p>', {'class':"slide-title-text",
                                                'style':"",
-                                              'text': photo.title}).appendTo(el);
+                                              'text': photo.title}).appendTo(content);
+                              content.appendTo(el);
                         }                       
                         if(photo.description && photo.description._content) {
                               desc = photo.description._content;
+                              
                               if(showdesc ){
                                   
                                   var cleandesc = cleanDescription(desc);
-                                  jQuery('<div>', {'class':"slide-desc-text",
-                                                  'style':"",
-                                                  'text': cleandesc
-                                                   }).appendTo(el);
+                                  if(content){
+                                       jQuery('<span>', {'class':"slide-desc-text",
+                                                        'style':"",
+                                                        'text': cleandesc
+                                                         }).appendTo(content);
+                                  }else{
+                                        jQuery('<div>', {'class':"slide-desc-text",
+                                                        'style':"",
+                                                        'text': cleandesc
+                                                         }).appendTo(el);
+                                  }
+                                  
                               }
                               
                               var links = desc.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi);
@@ -94,6 +109,7 @@ function getFlickrFotoByPhotoId(photo, approximateWidth, API_KEY, $slides){
 
                         }
                         
+                        
                         el.appendTo($slides);
                 });
 }
@@ -103,10 +119,16 @@ function cleanDescription(desc){
           //console.log(desc.replace(/<\/?[^>]+(>|$)/g, "") );                             
           //var cleandesc = desc.replace(/<\/?[^>]+(>|$)/g, "");
           //var cleandesc = desc.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+          
           var results = desc.match(/(<a\b[^>]*?>.*?<\/a>)/g);
-          var last = results[results.length-1];
-          var cleandesc =  desc.replace(last, "");
-          cleandesc = cleandesc.replace(/<\/?[^>]+(>|$)/g, "");
-          console.log(  cleandesc ); 
+          if (results) {
+               var last = results[results.length-1];
+               var cleandesc =  desc.replace(last, "");
+               cleandesc = cleandesc.replace(/<\/?[^>]+(>|$)/g, "");
+          }else{
+               cleandesc = desc;   
+          }
+          
+          
           return cleandesc;          
 }

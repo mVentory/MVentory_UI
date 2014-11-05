@@ -30,9 +30,8 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
       
       $userId = $this->getUserId();
       $photosetId = $this->getPhotosetId();
-        Mage::log("photoset id:".$photosetId);
-        Mage::log("user id:".$userId);
-        
+      ///html id of the slides element
+      $slidesId =   $this->getSlidesId();
       if(empty($enabled)){
           return;
       }
@@ -61,18 +60,25 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
         return;
       }
       
-        
-      $html ='<div id="slides" class="" ></div>
-              
+      
+      if(empty($slidesId)){
+        $slidesId = 'slides';
+        $html = '<div id="'.$slidesId.'" class=""></div>';
+      }else{
+        ///the html element was already placed. For example in the cms page.
+        $html ="";
+      }
+      $html .='
               <script type="text/javascript">// <![CDATA[
           
               var API_KEY = \''. $apiKey .'\';
               var userId = \''.$userId.'\';
               var photosetId = \''. $photosetId .'\';
-              var $slides = jQuery("#slides");
+              var $slides = jQuery("#'.$slidesId.'");
               var showtitle='.(!empty($title)?'true;':"false").';
               var showdesc='.(!empty($description)?'true;':"false").';
               var request = {};
+              
               
               if(photosetId){
                   request = {method: "flickr.photosets.getPhotos",
@@ -114,23 +120,24 @@ class MVentory_UICameraSliderWidget_Block_Slider extends Mage_Core_Block_Abstrac
                
                             
               jQuery(window).load(function(){
-                  
-                    $slides.camera({
-                      alignmen: "topCenter",
-                      height: "36.34%",
-                      minHeight: "281px",
-                      loader : false,
-                      pagination: false,
-                      fx: "simpleFade",
-                      navigationHover:false,
-                      navigation: true,
-                      thumbnails: false,
-                      playPause: false,
-                      '.$paramsstr.'
-                      
-                    });
+                    
+                     $slides.camera({
+                        alignmen: "topCenter",
+                        height: "56.5656%",
+                        //height: "66.6144%",
+                        minHeight: "134px",
+                        loader : false,
+                        pagination: true,
+                        fx: "simpleFade",
+                        navigationHover: true,
+                        navigation: true,
+                        pagination:false,
+                        thumbnails: false,
+                        playPause: false,
+                        '.$paramsstr.'
+                      });
+                    
               });
-                           
               // ]]></script>
     ';
     
