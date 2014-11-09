@@ -28,10 +28,7 @@
           <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
                 <script>camera/jquery183-min.js</script>
           </action>
-          <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
-                <script>camera/mv_loadjquery.js</script>
-          </action>          
-          
+                    
           <!--    
           <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
                 <script>camera/jquery.mobile.customized.min.js</script>
@@ -45,7 +42,7 @@
           <action ifconfig="camerasliderwidget/group1/isenabled" method="addJs">
                 <script>camera/camera.getImageSizes.js</script>
           </action>
-
+          
         </reference>
     </default>
   
