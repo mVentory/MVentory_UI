@@ -19,52 +19,49 @@
 -->
 <widgets>
     <camerasliderwidget_home type="camerasliderwidget/slider" module="camerasliderwidget">
-        <name>Camera Slider by Pixedelic</name>
-        <description type="desc">Type of the slider to display Flickr images.</description>
-        
-        
-        <parameters>
-          
-          <request_type translate="label" module="camerasliderwidget">
-                <visible>1</visible>
-                <type>camerasliderwidget/select</type>
-                <label>Get images by:</label>
-                <values>
-                    <default translate="label">
-                        <value>photoset_id</value>
-                        <label>Photoset ID</label>
-                    </default>
-                    <list translate="label">
-                        <value>user_id</value>
-                        <label>User ID</label>
-                    </list>
-                </values>
-            </request_type>
-          
-            <user_id translate="label" module="camerasliderwidget">
-              <visible>1</visible>
-              <label>User ID:</label>
-              <description>E.g. 49598046@N00 in flickr.com/photos/49598046@N00</description>
-              <type>text</type>
-            </user_id>
-            <photoset_id translate="label" module="camerasliderwidget">
-              <visible>1</visible>
-              <label>Photoset ID:</label>
-              <description><![CDATA[
-                 E.g. 72157612446667983 in flickr.com/photos/49598046@N00/sets/72157612446667983<br/>
-                 If a photoset is specified then the user_id will be ignored.
-                 ]]></description>
-              <type>text</type>
-            </photoset_id>
-            <paramsstring translate="label" module="camerasliderwidget">
-              <visible>1</visible>
-              <label>Params for camera.js:</label>
-              <description><![CDATA[A comma-separated string, use single quotes. <br/>
-              E.g. alignment: 'topCenter', height: '66.34%', minHeight: '350px', title:'true', description:'true'<br/>
-              See <a target="_blank" href="http://www.pixedelic.com/plugins/camera/#apis_anchor">Pixedelic doco</a> for the full list.]]></description>
-              <type>textarea</type>
-            </paramsstring>
-            
-        </parameters>    
+      <name>Camera Slider by Pixedelic</name>
+      <description type="desc">Type of the slider to display Flickr images.</description>
+
+      <parameters>
+        <request_type translate="label" module="camerasliderwidget">
+          <visible>1</visible>
+          <type>camerasliderwidget/select</type>
+          <label>Get images by:</label>
+          <values>
+            <default translate="label">
+              <value>photoset_id</value>
+              <label>Photoset ID</label>
+            </default>
+            <list translate="label">
+              <value>user_id</value>
+              <label>User ID</label>
+            </list>
+          </values>
+        </request_type>
+        <user_id translate="label" module="camerasliderwidget">
+          <visible>1</visible>
+          <label>User ID:</label>
+          <description>E.g. 49598046@N00 in flickr.com/photos/49598046@N00</description>
+          <type>text</type>
+        </user_id>
+        <photoset_id translate="label" module="camerasliderwidget">
+          <visible>1</visible>
+          <label>Photoset ID:</label>
+          <description><![CDATA[
+             E.g. 72157612446667983 in flickr.com/photos/49598046@N00/sets/72157612446667983<br/>
+             If a photoset is specified then the user_id will be ignored.
+             ]]></description>
+          <type>text</type>
+        </photoset_id>
+        <paramsstring translate="label" module="camerasliderwidget">
+          <visible>1</visible>
+          <label>Params for camera.js:</label>
+          <description><![CDATA[A comma-separated string, use single quotes. <br/>
+          E.g. alignment: 'topCenter', height: '66.34%', minHeight: '350px', title:'true', description:'true'<br/>
+          See <a target="_blank" href="http://www.pixedelic.com/plugins/camera/#apis_anchor">Pixedelic doco</a> for the full list.]]></description>
+          <type>textarea</type>
+        </paramsstring>
+
+        </parameters>
     </camerasliderwidget_home>
-</widgets> 
+</widgets>

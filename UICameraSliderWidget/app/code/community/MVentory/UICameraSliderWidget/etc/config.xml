@@ -12,6 +12,7 @@
 * See http://mventory.com/legal/licensing/ for other licensing options.
 *
 * @package MVentory/UICameraSliderWidget
+* @author bogdan@mventory.com
 * @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
@@ -35,7 +36,7 @@
     </helpers>
 
   </global>
-  
+
   <frontend>
         <layout>
             <updates>
@@ -45,7 +46,7 @@
             </updates>
         </layout>
   </frontend>
-  
+
   <adminhtml>
     <acl>
       <resources>
@@ -68,13 +69,13 @@
       </resources>
     </acl>
   </adminhtml>
-  
+
   <default><!--for system.xml default vals-->
     <camerasliderwidget>
-        <group1>               
-            <isenabled>1</isenabled> 
-        </group1>       
+        <group1>
+            <isenabled>1</isenabled>
+        </group1>
     </camerasliderwidget>
   </default>
-  
+
 </config>

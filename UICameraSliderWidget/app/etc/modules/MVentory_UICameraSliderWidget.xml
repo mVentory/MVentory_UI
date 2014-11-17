@@ -12,18 +12,19 @@
 * See http://mventory.com/legal/licensing/ for other licensing options.
 *
 * @package MVentory/UICameraSliderWidget
+* @author bogdan@mventory.com
 * @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 -->
 <config>
-    <modules>
-        <MVentory_UICameraSliderWidget>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>
-                <Mage_Cms />
-            </depends>
-        </MVentory_UICameraSliderWidget>
-    </modules>
+  <modules>
+    <MVentory_UICameraSliderWidget>
+      <active>true</active>
+      <codePool>community</codePool>
+      <depends>
+          <Mage_Cms />
+      </depends>
+    </MVentory_UICameraSliderWidget>
+  </modules>
 </config>
