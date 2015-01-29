@@ -1,0 +1,5 @@
+block/              app/code/community/MVentory/UIProductsOnSale/Block/
+etc/                app/code/community/MVentory/UIProductsOnSale/etc/
+
+module.xml          app/etc/modules/MVentory_UIProductsOnSale.xml
+build.xml           var/connect/MVentory_UIProductsOnSale.xml
