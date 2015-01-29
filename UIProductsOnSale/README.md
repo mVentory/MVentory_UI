@@ -1,4 +1,4 @@
-#MVentory_UIProductDetails
+#MVentory_UIProductsOnSale
 
 ##Features
 
