@@ -1,0 +1,5 @@
+block/              app/code/community/MVentory/UICategoriesList/Block/
+etc/                app/code/community/MVentory/UICategoriesList/etc/
+
+module.xml          app/etc/modules/MVentory_UICategoriesList.xml
+build.xml           var/connect/MVentory_UICategoriesList.xml
