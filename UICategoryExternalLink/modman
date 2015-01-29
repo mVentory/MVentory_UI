@@ -1,0 +1,4 @@
+app/code/community/MVentory/*                                               app/code/community/MVentory/
+app/etc/modules/*                                                           app/etc/modules/
+
+app/design/frontend/base/default/template/page/html/topmenu/renderer.phtml  app/design/frontend/base/default/template/page/html/topmenu/renderer.phtml
