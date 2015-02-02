@@ -35,7 +35,6 @@ class MVentory_UIProductsOnSale_Model_Observer
    *   Instance of this class
    */
   public function listOnSaleOnly ($observer) {
-    Mage::log(get_class($observer));
     $helper = Mage::helper('uiproductsonsale');
 
     if (!$helper->isOnDiscountFilter())
