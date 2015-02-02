@@ -32,5 +32,41 @@
         <class>MVentory_UIProductsOnSale_Block</class>
       </uiproductsonsale>
     </blocks>
+
+    <helpers>
+      <uiproductsonsale>
+        <class>MVentory_UIProductsOnSale_Helper</class>
+      </uiproductsonsale>
+    </helpers>
+
+    <models>
+      <uiproductsonsale>
+        <class>MVentory_UIProductsOnSale_Model</class>
+      </uiproductsonsale>
+    </models>
   </global>
+
+  <frontend>
+    <routers>
+      <uiproductsonsale>
+        <use>standard</use>
+        <args>
+          <module>MVentory_UIProductsOnSale</module>
+          <frontName>productsonsale</frontName>
+        </args>
+      </uiproductsonsale>
+    </routers>
+
+    <events>
+      <catalog_block_product_list_collection>
+        <observers>
+          <uiproductsonsale_list_on_sale_only>
+            <type>singleton</type>
+            <class>MVentory_UIProductsOnSale_Model_Observer</class>
+            <method>listOnSaleOnly</method>
+          </uiproductsonsale_list_on_sale_only>
+        </observers>
+      </catalog_block_product_list_collection>
+    </events>
+  </frontend>
 </config>

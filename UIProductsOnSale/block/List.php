@@ -75,23 +75,12 @@ class MVentory_UIProductsOnSale_Block_List
     if ($collection)
       return $collection;
 
-    $now = Mage::getModel('core/date')->date();
-
     $collection = Mage::getResourceModel('catalog/product_collection');
     $collection = $this
       ->_addProductAttributesAndPrices($collection)
       ->addAttributeToFilter(
           'small_image',
           array('nin' => array('no_selection', ''))
-        )
-      ->addAttributeToFilter('special_price', array('notnull' => true))
-      ->addAttributeToFilter(
-          'special_from_date',
-          array(array('lteq' => $now), array('null' => true))
-        )
-      ->addAttributeToFilter(
-          'special_to_date',
-          array(array('gt' => $now), array('null' => true))
         )
       ->setVisibility(
           Mage::getSingleton('catalog/product_visibility')
@@ -101,6 +90,8 @@ class MVentory_UIProductsOnSale_Block_List
       ->addAttributeToSort('entity_id', 'desc')
       ->setPageSize($this->getProductsCount())
       ->setCurPage(1);
+
+    Mage::helper('uiproductsonsale')->applyOnDiscountFilter($collection);
 
     $this->setData('product_collection', $collection);
 

@@ -1,5 +1,8 @@
-block/              app/code/community/MVentory/UIProductsOnSale/Block/
-etc/                app/code/community/MVentory/UIProductsOnSale/etc/
+block/               app/code/community/MVentory/UIProductsOnSale/Block/
+helper/              app/code/community/MVentory/UIProductsOnSale/Helper/
+model/               app/code/community/MVentory/UIProductsOnSale/Model/
+controllers/         app/code/community/MVentory/UIProductsOnSale/controllers/
+etc/                 app/code/community/MVentory/UIProductsOnSale/etc/
 
-module.xml          app/etc/modules/MVentory_UIProductsOnSale.xml
-build.xml           var/connect/MVentory_UIProductsOnSale.xml
+module.xml           app/etc/modules/MVentory_UIProductsOnSale.xml
+build.xml            var/connect/MVentory_UIProductsOnSale.xml
