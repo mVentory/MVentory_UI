@@ -2,7 +2,8 @@
 
 ##Features
 
-Display specified number of products on sale
+Display specified number of products on sale via block
+Display all products on sale in category view
 
 ##License
 
@@ -16,10 +17,18 @@ to the [project on Github](https://github.com/mVentory/MVentory_UI).
 
 ##About the extension
 
-This small extension allows to display list of products on sale. Number of
-products can be set via parameter. Add uiproductsonsale/list block to layout
-file and specify template to display products.
+This small extension allows to display list of products on sale using block.
+Number of products can be set via parameter. Add uiproductsonsale/list block
+to layout file and specify template to display products.
 
+Visit `productsonsale/category/all` to see all products on sale in category
+view.
+
+Make stores's default category as anchor to allow category layered filtering
+for products on sale
+
+You can add URL rewrite to make link to all products on sale look better,
+e.g `products-on-discount.html`
 
 ##Help and support
 
