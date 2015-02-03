@@ -2,8 +2,8 @@
 
 ##Features
 
-* Display specified number of products on sale via block
-* Display all products on sale in category view
+* Display specified number of products on sale via block.
+* Display all products on sale in category view with layer filters.
 
 ##License
 
@@ -15,23 +15,15 @@ waiver.
 not distribute the modified material. Please, contribute your changes back
 to the [project on Github](https://github.com/mVentory/MVentory_UI).
 
-##About the extension
+## Displaying discounted products using a block
 
-This small extension allows to display list of products on sale using block.
-Also it allows to display all products on discount via default Magento
-category view with layer filters.
-
-## Using
-
-### Block
-
-Add it via layout XML file of your theme (see _layout_ directory in the theme)
+Use the layout XML file of your theme (see _layout_ directory in the theme)
 or call it in any CMS page/block.
 
 The block has 2 parameters:
 
-* Products count - Number of products to display, by default 6
-* `cache_lifetime` - Caching time, by default 86400 seconds
+* Products count - Number of products to display, 6 by default
+* `cache_lifetime` - Caching time, 86400 (s) by default
 
 Example for layout XML file:
 
@@ -46,7 +38,7 @@ Example for layout XML file:
 </reference>
 ```
 
-Example of calling via CMS page/block (put it in the content of CMS page/block):
+Example of displaying discounted products via a CMS page/block (put it in the content section of the CMS page/block):
 
 ```
 <h3>Products On Sale</h3>
@@ -54,8 +46,7 @@ Example of calling via CMS page/block (put it in the content of CMS page/block):
 {{block type="uiproductsonsale/list" template="uiproductsonsale/list.phtml" products_count="2" cache_lifetime="9000"}}
 ```
 
-The extension doesn't install default template to output the block. Example of
-simple template:
+Note that `uiproductsonsale/list.phtml` doesn't come as part of this extension. You need to create your own phtml file for that, but we provided a generic example below.
 
 ```
 <?php
@@ -104,124 +95,16 @@ $_imgSize = 207;
 <?php endif ?>
 ```
 
-### Products on discount in category view
+## Displaying discounted products in category view
 
-Visit _http://yoursite.com/productsonsale/category/all_ to display all products
-on discount in category view. You can use category layered filters there
-if default category is anchor.
+Go to _http://yoursite.com/productsonsale/category/all_ to see all discounted products in category view. 
+Since no category is involved there the products are displayed under the default category, which is at the very top your category tree. Consder making it an anchor to display layered navigation filters with the discounted products.
 
-Create URL rewrite for better link. Go to -Admin -> Catalog
--> URL Rewrite Management-, click on _Add URL Rewrite_, choise Custom for
-_Create URL Rewrite). Fill following fields:
-
-* ID Path: all-products-on-discount
-* Request Path: products-on-discount.html
-* Target Path: productsonsale/category/all
-* Redirect: No
-
-Click on Save to save new rule.
-
-## Using
-
-### Block
-
-Add it via layout XML file of your theme (see _layout_ directory in the theme)
-or call it in any CMS page/block.
-
-The block has 2 parameters:
-
-* Products count - Number of products to display, by default 6
-* `cache_lifetime` - Caching time, by default 86400 seconds
-
-Example for layout XML file:
-
-```
-<reference name="content">
-  <block type="uiproductsonsale/list" name="products.onsale" template="uiproductsonsale/list.phtml">
-    <!-- Number of products to display -->
-    <action method="setProductsCount"><count>8</count></action>
-    <!-- Cacihing time inseconds -->
-    <action method="setCacheLifetime"><lifetime>9000</lifetime></action>
-  </block>
-</reference>
-```
-
-Example of calling via CMS page/block (put it in the content of CMS page/block):
-
-```
-<h3>Products On Sale</h3>
-
-{{block type="uiproductsonsale/list" template="uiproductsonsale/list.phtml" products_count="2" cache_lifetime="9000"}}
-```
-
-The extension doesn't install default template to output the block. Example of
-simple template:
-
-```
-<?php
-
-$_productCollection = $this->getProductCollection()
-
-?>
-
-<?php if ($_productCollection->count()): ?>
-
-<?php
-
-$_helper = $this->helper('catalog/image');
-$_imgSize = 207;
-
-?>
-
-<ul class="products-grid">
-  <?php foreach ($_productCollection as $_product): ?>
-
-  <?php
-
-  $_name = $this->htmlEscape($_product->getName());
-  $_label = $this->htmlEscape($this->getImageLabel($_product, 'small_image'));
-  $_url = $_product->getProductUrl();
-
-  ?>
-
-  <li>
-    <a href="<?php echo $_url ?>" title="<?php echo $_label; ?>" class="product-image">
-      <img src="<?php echo $_helper->init($_product, 'small_image')->resize($_imgSize); ?>" alt="<?php echo $_label; ?>" title="<?php echo $_label; ?>" />
-    </a>
-
-    <div class="product-info">
-      <h3 class="product-name">
-        <a href="<?php echo $_url; ?>" title="<?php echo $_name; ?>"><?php echo $_name; ?></a>
-      </h3>
-
-      <?php echo $this->getPriceHtml($_product, true); ?>
-    </div>
-  </li>
-
-  <?php endforeach; ?>
-</ul>
-
-<?php endif ?>
-```
-
-### Products on discount in category view
-
-Visit _http://yoursite.com/productsonsale/category/all_ to display all products
-on discount in category view. You can use category layered filters there
-if default category is anchor.
-
-Create URL rewrite for better link. Go to -Admin -> Catalog
--> URL Rewrite Management-, click on _Add URL Rewrite_, choise Custom for
-_Create URL Rewrite). Fill following fields:
+You can create a URL rewrite rule for an SEO-friendly link. Go to -Admin -> Catalog
+-> URL Rewrite Management-, click on _Add URL Rewrite_, choose Custom option for
+_Create URL Rewrite_. You can use this sample set of data:
 
 * ID Path: all-products-on-discount
 * Request Path: products-on-discount.html
 * Target Path: productsonsale/category/all
 * Redirect: No
-
-Click on Save to save new rule.
-
-##Help and support
-
-Please, contact us on info@mventory.com if you need help installing
-and configuring it.
