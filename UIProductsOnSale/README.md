@@ -3,7 +3,7 @@
 ##Features
 
 * Display specified number of products on sale via block.
-* Display all products on sale in category view with layer filters.
+* Display all products on sale in category view.
 
 ##License
 
