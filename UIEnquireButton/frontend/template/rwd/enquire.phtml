@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Creative Commons License BY-NC-ND.
+ * NonCommercial — You may not use the material for commercial purposes.
+ * NoDerivatives — If you remix, transform, or build upon the material,
+ * you may not distribute the modified material.
+ * See the full license at http://creativecommons.org/licenses/by-nc-nd/4.0/
+ *
+ * See http://mventory.com/legal/licensing/ for other licensing options.
+ *
+ * @package MVentory/UIEnquireButton
+ * @copyright Copyright (c) 2015 mVentory Ltd. (http://mventory.com)
+ * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
+ */
+
+/**
+ * Enquire button
+ *
+ * @package MVentory/UIEnquireButton
+ * @author Anatoly A. Kazantsev <anatoly@mventory.com>
+ */
+
+?>
+
+<?php
+
+$_helper = Mage::helper('uienquirebutton');
+$_product = $this->getProduct();
+
+?>
+
+<?php if ($_product->isSaleable()): ?>
+<div class="add-to-cart">
+  <div class="add-to-cart-buttons">
+    <a title="<?php echo $_helper->getTitle() ?>" class="button btn-enquire" href="<?php echo $_helper->getEmailLink($_product) ?>">
+      <span>
+        <span><?php echo $_helper->getLabel() ?></span>
+      </span>
+    </a>
+    <?php echo $this->getChildHtml('', true, true) ?>
+  </div>
+</div>
+<?php endif; ?>

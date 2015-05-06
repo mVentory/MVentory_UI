@@ -1,0 +1,8 @@
+helper/                  app/code/community/MVentory/UIEnquireButton/Helper/
+etc/                     app/code/community/MVentory/UIEnquireButton/etc/
+
+frontend/template/base/  app/design/frontend/base/default/template/uienquirebutton/
+frontend/template/rwd/   app/design/frontend/rwd/default/template/uienquirebutton/
+
+module.xml               app/etc/modules/MVentory_UIEnquireButton.xml
+build.xml                var/connect/MVentory_UIEnquireButton.xml
