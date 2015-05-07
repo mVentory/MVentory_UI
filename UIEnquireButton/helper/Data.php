@@ -34,7 +34,7 @@ class MVentory_UIEnquireButton_Helper_Data extends Mage_Core_Helper_Abstract
    *   Label for enquire button
    */
   public function getLabel () {
-    return $this->__('Inquire now');
+    return $this->__('Enquire now');
   }
 
   /**
@@ -44,7 +44,7 @@ class MVentory_UIEnquireButton_Helper_Data extends Mage_Core_Helper_Abstract
    *   Title for enquire button
    */
   public function getTitle () {
-    return $this->__('Inquire now');
+    return $this->__('Enquire now');
   }
 
   /**
