@@ -1,0 +1,7 @@
+etc/                     app/code/community/MVentory/UIAddThis/etc/
+
+frontend/template.phtml  app/design/frontend/base/default/template/uiaddthis/buttons.phtml
+frontend/layout.xml      app/design/frontend/base/default/layout/uiaddthis.xml
+
+module.xml               app/etc/modules/MVentory_UIAddThis.xml
+build.xml                var/connect/MVentory_UIAddThis.xml
