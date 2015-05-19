@@ -1,0 +1,9 @@
+block/                   app/code/community/MVentory/UIVideoTab/Block/
+etc/                     app/code/community/MVentory/UIVideoTab/etc/
+
+frontend/template.phtml  app/design/frontend/base/default/template/uivideotab/tab.phtml
+frontend/layout.xml      app/design/frontend/base/default/layout/uivideotab.xml
+frontend/styles.css      skin/frontend/base/default/uivideotab/
+
+module.xml               app/etc/modules/MVentory_UIVideoTab.xml
+build.xml                var/connect/MVentory_UIVideoTab.xml
