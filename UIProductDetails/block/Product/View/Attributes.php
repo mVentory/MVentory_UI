@@ -51,9 +51,12 @@ class MVentory_UIProductDetails_Block_Product_View_Attributes
     $attributes = $product->getAttributes();
 
     if ($category) {
-      $urlInstance = $category
-        ->getUrlModel()
-        ->getUrlInstance();
+      //Backward compatibility for M. < 1.8.0.0
+      $urlInstance = method_exists($category, 'getUrlModel')
+        ? $category
+            ->getUrlModel()
+            ->getUrlInstance()
+        : $category->getUrlInstance();
 
       //Remember query parameters to re-store them at the end
       $queryParams = $urlInstance->getQueryParams();
