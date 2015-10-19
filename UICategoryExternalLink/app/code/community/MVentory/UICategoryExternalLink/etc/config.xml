@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <!--
 /**
 * NOTICE OF LICENSE
@@ -16,59 +17,66 @@
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 -->
+
 <config>
-<modules>
-  <MVentory_UICategoryExternalLink>
-    <version>0.1.0</version>
-  </MVentory_UICategoryExternalLink>
-</modules>
-<global>
-  <blocks>
-      
-        <page>
-            <rewrite>
-                <html_topmenu>MVentory_UICategoryExternalLink_Block_Html_Topmenu</html_topmenu>
-            </rewrite>
-        </page>
-      
-  </blocks>
-  <helpers>
+  <modules>
+    <MVentory_UICategoryExternalLink>
+      <version>0.1.0</version>
+    </MVentory_UICategoryExternalLink>
+  </modules>
+
+  <global>
+    <blocks>
       <categoryexternallink>
-          <class>MVentory_UICategoryExternalLink_Helper</class>
+        <class>MVentory_UICategoryExternalLink_Block</class>
       </categoryexternallink>
-  </helpers>
-  <models>
+
+      <page>
+        <rewrite>
+          <html_topmenu>MVentory_UICategoryExternalLink_Block_Html_Topmenu</html_topmenu>
+        </rewrite>
+      </page>
+    </blocks>
+
+    <helpers>
       <categoryexternallink>
-          <class>MVentory_UICategoryExternalLink_Model</class>
+        <class>MVentory_UICategoryExternalLink_Helper</class>
       </categoryexternallink>
-      
+    </helpers>
+
+    <models>
+      <categoryexternallink>
+        <class>MVentory_UICategoryExternalLink_Model</class>
+      </categoryexternallink>
+
       <catalog>
         <rewrite>
-            <!--
-            <category>MVentory_UICategoryExternalLink_Model_Category</category>
-            <category_url>MVentory_UICategoryExternalLink_Model_Category_Url</category_url>
-            <url>MVentory_UICategoryExternalLink_Model_Url</url>
-            -->
-            <observer>MVentory_UICategoryExternalLink_Model_Observer</observer>
+          <!--
+          <category>MVentory_UICategoryExternalLink_Model_Category</category>
+          <category_url>MVentory_UICategoryExternalLink_Model_Category_Url</category_url>
+          <url>MVentory_UICategoryExternalLink_Model_Url</url>
+          -->
+
+          <observer>MVentory_UICategoryExternalLink_Model_Observer</observer>
         </rewrite>
       </catalog>
+    </models>
 
-      
-  </models>        
-    
-   <events> 
-               <!--<page_block_html_topmenu_gethtml_before>
-                <observers>
-                    <catalog_add_topmenu_items>
-                        <class>catalog/observer</class>
-                        <method>addCatalogToTopmenuItems</method>
-                    </catalog_add_topmenu_items>
-                </observers>
-            </page_block_html_topmenu_gethtml_before>-->
-   </events>
-</global>
+    <events>
+      <!--
+      <page_block_html_topmenu_gethtml_before>
+        <observers>
+          <catalog_add_topmenu_items>
+            <class>catalog/observer</class>
+            <method>addCatalogToTopmenuItems</method>
+          </catalog_add_topmenu_items>
+        </observers>
+      </page_block_html_topmenu_gethtml_before>
+      -->
+    </events>
+  </global>
 
-<adminhtml>
-</adminhtml>
+  <adminhtml>
+  </adminhtml>
 
 </config>
