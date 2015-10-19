@@ -15,6 +15,7 @@
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 
-class MVentory_UICategoryExternalLink_Helper_Data extends Mage_Core_Helper_Abstract {
-
+class MVentory_UICategoryExternalLink_Helper_Data
+extends Mage_Core_Helper_Abstract
+{
 }
