@@ -13,7 +13,7 @@
 * See http://mventory.com/legal/licensing/ for other licensing options.
 *
 * @package MVentory/UICategoryExternalLink
-* @copyright Copyright (c) 2014 mVentory Ltd. (http://mventory.com)
+* @copyright Copyright (c) 2014-2015 mVentory Ltd. (http://mventory.com)
 * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 -->
@@ -27,9 +27,9 @@
 
   <global>
     <blocks>
-      <categoryexternallink>
+      <uicategoryexternalurl>
         <class>MVentory_UICategoryExternalLink_Block</class>
-      </categoryexternallink>
+      </uicategoryexternalurl>
 
       <page>
         <rewrite>
@@ -39,15 +39,15 @@
     </blocks>
 
     <helpers>
-      <categoryexternallink>
+      <uicategoryexternalurl>
         <class>MVentory_UICategoryExternalLink_Helper</class>
-      </categoryexternallink>
+      </uicategoryexternalurl>
     </helpers>
 
     <models>
-      <categoryexternallink>
+      <uicategoryexternalurl>
         <class>MVentory_UICategoryExternalLink_Model</class>
-      </categoryexternallink>
+      </uicategoryexternalurl>
 
       <catalog>
         <rewrite>
