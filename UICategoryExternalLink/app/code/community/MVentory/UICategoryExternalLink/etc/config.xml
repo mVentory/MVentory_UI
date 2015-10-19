@@ -88,4 +88,14 @@
   <adminhtml>
   </adminhtml>
 
+  <frontend>
+    <category>
+      <collection>
+        <attributes>
+          <external_url/>
+        </attributes>
+      </collection>
+    </category>
+  </frontend>
+
 </config>

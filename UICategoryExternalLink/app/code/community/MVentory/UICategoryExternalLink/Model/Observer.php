@@ -1,56 +1,67 @@
 <?php
-class MVentory_UICategoryExternalLink_Model_Observer extends Mage_Catalog_Model_Observer {
-  
-  
-     /**
-     * Recursively adds categories to top menu
-     *
-     * @param Varien_Data_Tree_Node_Collection|array $categories
-     * @param Varien_Data_Tree_Node $parentCategoryNode
-     * @param Mage_Page_Block_Html_Topmenu $menuBlock
-     * @param bool $addTags
-     */
-    protected function _addCategoriesToMenu($categories, $parentCategoryNode, $menuBlock, $addTags = false)
-    {
-        $categoryModel = Mage::getModel('catalog/category');
-        foreach ($categories as $category) {
-            if (!$category->getIsActive()) {
-                continue;
-            }
 
-            $nodeId = 'category-node-' . $category->getId();
+class MVentory_UICategoryExternalLink_Model_Observer
+  extends Mage_Catalog_Model_Observer
+{
+  protected $isFlatCategories;
+  protected $categoryModel;
 
-            $categoryModel->setId($category->getId());
-            if ($addTags) {
-                $menuBlock->addModelTags($categoryModel);
-            }
+  public function __construct () {
+    $helper = Mage::helper('catalog/category_flat');
+    $this->isFlatCategories = $helper->isEnabled() && $helper->isBuilt(true);
 
-$categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')
-->addAttributeToFilter('entity_id', array('in' =>$category->getId() ));
-$cat = $categories->getFirstItem();
-#Mage::log($cat->getdata());
+    $this->categoryModel = Mage::getModel('catalog/category');
+  }
 
+  /**
+   * Recursively adds categories to top menu
+   *
+   * @param Varien_Data_Tree_Node_Collection|array $categories
+   * @param Varien_Data_Tree_Node $parentCategoryNode
+   * @param Mage_Page_Block_Html_Topmenu $menuBlock
+   * @param bool $addTags
+   */
+  protected function _addCategoriesToMenu ($categories,
+                                           $parentCategoryNode,
+                                           $menuBlock,
+                                           $addTags = false) {
 
-            $tree = $parentCategoryNode->getTree();
-            $categoryData = array(
-                'name' => $category->getName(),
-                'id' => $nodeId,
-                'url' => Mage::helper('catalog/category')->getCategoryUrl($category),
-                'is_active' => $this->_isActiveMenuCategory($category)
-                ,'external_link' => $cat->getmventoryExternalLink()
-            );
-            $categoryNode = new Varien_Data_Tree_Node($categoryData, 'id', $tree, $parentCategoryNode);
-            $parentCategoryNode->addChild($categoryNode);
-#Mage::log(Mage::helper('catalog/category')->getCategoryUrl($category));
-            $flatHelper = Mage::helper('catalog/category_flat');
-            if ($flatHelper->isEnabled() && $flatHelper->isBuilt(true)) {
-                $subcategories = (array)$category->getChildrenNodes();
-            } else {
-                $subcategories = $category->getChildren();
-            }
+    foreach ($categories as $category) {
+      if (!$category->getIsActive())
+        continue;
 
-            $this->_addCategoriesToMenu($subcategories, $categoryNode, $menuBlock, $addTags);
-        }
+      $id = $category->getId();
+
+      if ($addTags)
+        $menuBlock->addModelTags($this->categoryModel->setId($id));
+
+      //Set URL to external one
+      $externalUrl = $category['external_url'];
+      if ($externalUrl)
+        $category->setData('url', $category['external_url']);
+
+      $categoryNode = new Varien_Data_Tree_Node(
+        [
+          'name' => $category->getName(),
+          'id' => 'category-node-' . $id,
+          'url' => Mage::helper('catalog/category')->getCategoryUrl($category),
+          'is_active' => $this->_isActiveMenuCategory($category)
+        ],
+        'id',
+        $parentCategoryNode->getTree(),
+        $parentCategoryNode
+      );
+
+      $parentCategoryNode->addChild($categoryNode);
+
+      $this->_addCategoriesToMenu(
+        $this->isFlatCategories
+          ? (array) $category->getChildrenNodes()
+          : $category->getChildren(),
+        $categoryNode,
+        $menuBlock,
+        $addTags
+      );
     }
-  
+  }
 }
