@@ -16,16 +16,16 @@
  * @license http://creativecommons.org/licenses/by-nc-nd/4.0/
 */
 
-$installer->startSetup();
+$this->startSetup();
 
 $this->addAttribute(
   Mage_Catalog_Model_Category::ENTITY,
-  'mventory_external_link',
+  'external_url',
   array(
     'group' => 'General Information',
     'input' => 'text',
     'type' => 'varchar',
-    'label' => 'External Link',
+    'label' => 'External URL',
     'backend' => '',
     'visible' => true,
     'required' => false,
@@ -34,4 +34,4 @@ $this->addAttribute(
   )
 );
 
-$installer->endSetup();
+$this->endSetup();

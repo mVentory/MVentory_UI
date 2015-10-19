@@ -21,7 +21,7 @@
 <config>
   <modules>
     <MVentory_UICategoryExternalLink>
-      <version>0.1.0</version>
+      <version>1</version>
     </MVentory_UICategoryExternalLink>
   </modules>
 
@@ -61,6 +61,15 @@
         </rewrite>
       </catalog>
     </models>
+
+    <resources>
+      <uicategoryexternalurl_setup>
+        <setup>
+          <module>MVentory_UICategoryExternalLink</module>
+          <class>Mage_Catalog_Model_Resource_Setup</class>
+        </setup>
+      </uicategoryexternalurl_setup>
+    </resources>
 
     <events>
       <!--
