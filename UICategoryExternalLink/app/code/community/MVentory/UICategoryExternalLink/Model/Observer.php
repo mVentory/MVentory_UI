@@ -53,8 +53,14 @@ class MVentory_UICategoryExternalLink_Model_Observer
 
       //Set URL to external one
       $externalUrl = $category['external_url'];
-      if ($externalUrl)
-        $category->setData('url', $category['external_url']);
+      if ($externalUrl) {
+          $category->setData(
+            'url',
+            $externalUrl[0] === '/'
+              ? Mage::app()->getStore()->getBaseUrl() . substr($externalUrl, 1)
+              : $externalUrl
+          );
+      }
 
       $categoryNode = new Varien_Data_Tree_Node(
         [
