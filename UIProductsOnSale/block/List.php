@@ -125,4 +125,14 @@ class MVentory_UIProductsOnSale_Block_List
 
     return $this->_productsCount;
   }
+
+    /**
+     * Retrieve loaded category collection
+     *
+     * @return Mage_Eav_Model_Entity_Collection_Abstract
+     */
+    public function getLoadedProductCollection()
+    {
+        return $this->_getProductCollection();
+    }
 }
