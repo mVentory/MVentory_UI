@@ -40,7 +40,7 @@ class MVentory_UIProductsOnSale_Block_List
       ->addColumnCountLayoutDepend('two_columns_right', 3);
 
     $this->addData(array(
-      'cache_lifetime' => 86400,
+      'cache_lifetime' => ($cache_lifetime = $this->getData('cache_lifetime')) ? $cache_lifetime : 86400,
       'cache_tags' => array(Mage_Catalog_Model_Product::CACHE_TAG),
     ));
   }
@@ -58,6 +58,7 @@ class MVentory_UIProductsOnSale_Block_List
       Mage::getDesign()->getPackageName(),
       Mage::getDesign()->getTheme('template'),
       Mage::getSingleton('customer/session')->getCustomerGroupId(),
+      ($cat_id = $this->getData('category_id')) ? $cat_id : null,
       'template' => $this->getTemplate(),
       $this->getProductsCount()
     );
@@ -76,6 +77,11 @@ class MVentory_UIProductsOnSale_Block_List
       return $collection;
 
     $collection = Mage::getResourceModel('catalog/product_collection');
+
+    $cat_id=$this->getData('category_id');
+    if ($cat_id && $category=Mage::getModel('catalog/category')->load($cat_id))
+      $collection->addCategoryFilter($category);
+
     $collection = $this
       ->_addProductAttributesAndPrices($collection)
       ->addAttributeToFilter(
@@ -133,6 +139,6 @@ class MVentory_UIProductsOnSale_Block_List
      */
     public function getLoadedProductCollection()
     {
-        return $this->_getProductCollection();
+        return $this->getProductCollection();
     }
 }
