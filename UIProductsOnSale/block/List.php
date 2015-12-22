@@ -93,11 +93,13 @@ class MVentory_UIProductsOnSale_Block_List
             ->getVisibleInCatalogIds()
         )
       ->addStoreFilter()
-      ->addAttributeToSort('entity_id', 'desc')
+//      ->addAttributeToSort('entity_id', 'desc')
       ->setPageSize($this->getProductsCount())
       ->setCurPage(1);
 
     Mage::helper('uiproductsonsale')->applyOnDiscountFilter($collection);
+
+    $collection->getSelect()->order(new Zend_Db_Expr('RAND()'));
 
     $this->setData('product_collection', $collection);
 
