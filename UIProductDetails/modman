@@ -1,4 +1,5 @@
 block/                 app/code/community/MVentory/UIProductDetails/Block/
+template/              app/design/frontend/base/default/template/mventory/uiproductdetails/
 etc/                   app/code/community/MVentory/UIProductDetails/etc/
 
 module.xml             app/etc/modules/MVentory_UIProductDetails.xml

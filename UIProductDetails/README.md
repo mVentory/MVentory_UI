@@ -6,6 +6,19 @@
 on product page
 * Round value of weight attribute or hide it if it's zero
 * Wrap value if SKU attribute with link to QR code for product
+* Gives ability to add a QR code anywhere on the product page
+
+##Instructions
+
+Product attribute values in product collateral are updated automatically.
+
+To add a QR code somewhere on product page, add the following line into an appropriate
+place in your theme's local.xml, e.g. `<reference name="product.info">`:
+```
+<block type="uiproductdetails/qr" name="product.qr" template="mventory/uiproductdetails/qr.phtml" />
+```
+and then insert `<?php echo $this->getChildHtml('product.qr'); ?>` into your theme's product page
+template, e.g. `catalog/product/view.phtml`. Finally, style the QR code image as required.
 
 ##License
 
